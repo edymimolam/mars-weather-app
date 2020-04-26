@@ -6,14 +6,14 @@ import Wind from "./Wind";
 import Info from "./Info";
 import Unit from "./Unit";
 
-const CurrentWeather = () => (
+const CurrentWeather = ({ unit, onUnitClick }) => (
   <Container>
     <MainTitle>Latest weather at Elysium Plantitia</MainTitle>
     <Date />
     <Temperature />
     <Wind />
     <Info />
-    <Unit />
+    <Unit unit={unit} onUnitClick={onUnitClick} />
   </Container>
 );
 

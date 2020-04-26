@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Unit = () => (
-  <UnitContainer>
+const Unit = ({ unit, onUnitClick }) => (
+  <UnitContainer onClick={onUnitClick}>
     <label htmlFor="cel">°C</label>
-    <input type="radio" id="cel" name="unit" />
+    <input type="radio" />
 
     <UnitToggle />
 
     <label htmlFor="fah">°F</label>
-    <input type="radio" id="fah" name="unit" />
+    <input type="radio" />
   </UnitContainer>
 );
 

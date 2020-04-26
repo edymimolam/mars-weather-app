@@ -1,8 +1,23 @@
 import React from "react";
+import styled from "styled-components";
+import { SectionTitle } from "../common";
 
-export default () => (
-  <div className="date">
-    <h2 className="section-title section-title--date">Sol 377</h2>
-    <p className="date__day">September 31</p>
-  </div>
+const Date = () => (
+  <DateContainer>
+    <SectionTitle xl>Sol 377</SectionTitle>
+    <Day>September 31</Day>
+  </DateContainer>
 );
+
+const DateContainer = styled.div`
+  grid-column: 1 / 2;
+`;
+
+const Day = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.h2};
+  margin: 0;
+  color: ${({ theme }) => theme.colors.gray};
+  font-weight: ${({ theme }) => theme.fontWeights.light};
+`;
+
+export default Date;

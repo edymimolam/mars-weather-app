@@ -1,21 +1,62 @@
-import React from "react";
-import PreviosDay from "./PreviousDay";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+import { slideUpIn } from "../common";
+import PreviousDay from "./PreviousDay";
+import ButtonShow from "./ButtonShow";
 
-export default () => (
-  <div className="previous-weather">
-    {/* <!-- When clicked, toggle '.show-weather'
-     to .previous-weather div --> */}
-    <button htmlFor="weather-toggle" className="show-previous-weather">
-      <span>&#8593;</span>{" "}
-      <span className="sr-only">Show previous weather</span>
-    </button>
+const PreviousWeather = () => {
+  let [isShow, setIsShow] = useState(false);
+  let animationDelay = 75;
 
-    <h2 className="main-title previous-weather__title">Previous 7 days</h2>
+  return (
+    <Container isShow={isShow}>
+      <ButtonShow isShow={isShow} onClick={() => setIsShow((show) => !show)} />
 
-    <div className="previous-days">
-      {new Array(7).fill("something").map(() => (
-        <PreviosDay />
-      ))}
-    </div>
-  </div>
-);
+      <Title isShow={isShow}>Previous 7 days</Title>
+
+      <PreviousDaysContainer>
+        {new Array(7).fill("something").map((_n, i) => (
+          <PreviousDay
+            key={i}
+            isShow={isShow}
+            animationDelay={(animationDelay += 25)}
+          />
+        ))}
+      </PreviousDaysContainer>
+    </Container>
+  );
+};
+
+const Container = styled.div`
+  background: ${({ theme }) => theme.colors.light};
+  color: ${({ theme }) => theme.colors.dark};
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: ${({ isShow }) => (isShow ? "translateY(0)" : "translateY(60%)")};
+  transition: transform 350ms ease;
+  padding: 3rem;
+`;
+
+const Title = styled.h2`
+  font-size: ${({ theme }) => theme.fontSizes.h1};
+  font-weight: ${({ theme }) => theme.fontWeights.light};
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.accent};
+  letter-spacing: 2px;
+  text-align: center;
+
+  ${({ isShow }) =>
+    isShow &&
+    css`
+      animation: ${slideUpIn} 750ms forwards;
+      text-align: left;
+    `}
+`;
+
+const PreviousDaysContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export default PreviousWeather;

@@ -7,9 +7,13 @@ import { useNasaApi } from "./useNasaApi";
 const App = () => {
   let [currentSol, setCurrentSol] = useState(null);
   let { isLoading, sols } = useNasaApi(setCurrentSol);
-
   let [isMetric, setIsMetric] = useState(true);
+
   const onUnitClick = () => setIsMetric((isMetric) => !isMetric);
+  const onMoreInfoClick = (solNum) => {
+    let targetSol = sols.filter((s) => s.solNum === solNum)[0];
+    setCurrentSol(targetSol);
+  };
 
   return (
     <Theme>
@@ -23,7 +27,11 @@ const App = () => {
             onUnitClick={onUnitClick}
             currentSol={currentSol}
           />
-          <PreviousWeather />
+          <PreviousWeather
+            isMetric={isMetric}
+            onMoreInfoClick={onMoreInfoClick}
+            sols={sols}
+          />
         </>
       )}
     </Theme>

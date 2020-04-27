@@ -4,7 +4,7 @@ import { slideUpIn } from "../common";
 import PreviousDay from "./PreviousDay";
 import ButtonShow from "./ButtonShow";
 
-const PreviousWeather = () => {
+const PreviousWeather = ({ sols, ...props }) => {
   let [isShow, setIsShow] = useState(false);
   let animationDelay = 75;
 
@@ -15,11 +15,13 @@ const PreviousWeather = () => {
       <Title isShow={isShow}>Previous 7 days</Title>
 
       <PreviousDaysContainer>
-        {new Array(7).fill("something").map((_n, i) => (
+        {sols.map((sol) => (
           <PreviousDay
-            key={i}
+            key={sol.solNum}
+            sol={sol}
             isShow={isShow}
             animationDelay={(animationDelay += 25)}
+            {...props}
           />
         ))}
       </PreviousDaysContainer>

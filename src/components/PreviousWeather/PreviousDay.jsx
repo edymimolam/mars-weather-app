@@ -2,15 +2,30 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { slideUpIn } from "../common";
 
-const PreviousDay = ({ isShow, animationDelay }) => (
-  <Day isShow={isShow} animationDelay={animationDelay}>
-    <Sol> Sol 371</Sol>
-    <Date>Septermber 31</Date>
-    <Temperature>High: -20°C</Temperature>
-    <Temperature>Low: -120°C</Temperature>
-    <Info>more info</Info>
-  </Day>
-);
+const PreviousDay = ({
+  isShow,
+  animationDelay,
+  onMoreInfoClick,
+  sol: {
+    date,
+    solNum,
+    temperature: { metricHigh, imperialHigh, metricLow, imperialLow },
+  },
+  isMetric,
+}) => {
+  let high = isMetric ? `${metricHigh}°C` : `${imperialHigh}°F`;
+  let low = isMetric ? `${metricLow}°C` : `${imperialLow}°F`;
+
+  return (
+    <Day isShow={isShow} animationDelay={animationDelay}>
+      <Sol> Sol {solNum}</Sol>
+      <Date>{date}</Date>
+      <Temperature>High: {high}</Temperature>
+      <Temperature>Low: {low}</Temperature>
+      <Info onClick={() => onMoreInfoClick(solNum)}>more info</Info>
+    </Day>
+  );
+};
 
 const Day = styled.div`
   opacity: 0;

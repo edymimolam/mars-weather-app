@@ -6,14 +6,18 @@ import Wind from "./Wind";
 import Info from "./Info";
 import Unit from "./Unit";
 
-const CurrentWeather = ({ unit, onUnitClick }) => (
+const CurrentWeather = ({
+  isMetric,
+  onUnitClick,
+  currentSol: { solNum, date, temperature, wind },
+}) => (
   <Container>
     <MainTitle>Latest weather at Elysium Plantitia</MainTitle>
-    <Date />
-    <Temperature />
-    <Wind />
+    <Date solNum={solNum} date={date} />
+    <Temperature temperature={temperature} isMetric={isMetric} />
+    <Wind wind={wind} isMetric={isMetric} />
     <Info />
-    <Unit unit={unit} onUnitClick={onUnitClick} />
+    <Unit isMetric={isMetric} onUnitClick={onUnitClick} />
   </Container>
 );
 

@@ -5,18 +5,27 @@ import { Theme, GlobalStyle } from "./style";
 import { useNasaApi } from "./useNasaApi";
 
 const App = () => {
-  let { isLoading, sols } = useNasaApi();
+  let [currentSol, setCurrentSol] = useState(null);
+  let { isLoading, sols } = useNasaApi(setCurrentSol);
 
-  let [unit, setUnit] = useState("Metric");
-  const onUnitClick = () =>
-    setUnit((u) => (u === "Metric" ? "Imperial" : "Metric"));
+  let [isMetric, setIsMetric] = useState(true);
+  const onUnitClick = () => setIsMetric((isMetric) => !isMetric);
 
   return (
     <Theme>
       <GlobalStyle />
-      {console.log(sols)}
-      <CurrentWeather unit={unit} onUnitClick={onUnitClick} />
-      <PreviousWeather />
+      {isLoading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <>
+          <CurrentWeather
+            isMetric={isMetric}
+            onUnitClick={onUnitClick}
+            currentSol={currentSol}
+          />
+          <PreviousWeather />
+        </>
+      )}
     </Theme>
   );
 };

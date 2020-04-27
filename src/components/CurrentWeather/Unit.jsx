@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const Unit = ({ unit, onUnitClick }) => (
+const Unit = ({ isMetric, onUnitClick }) => (
   <UnitContainer onClick={onUnitClick}>
     <label htmlFor="cel">°C</label>
     <input type="radio" />
 
-    <UnitToggle />
+    <UnitToggle isMetric={isMetric} />
 
     <label htmlFor="fah">°F</label>
     <input type="radio" />
@@ -49,6 +49,10 @@ const UnitToggle = styled.button`
   border-radius: 100vmax;
   margin: 0 1em;
 
+  &:focus {
+    outline: none;
+  }
+
   &::after {
     content: "";
     display: block;
@@ -56,12 +60,8 @@ const UnitToggle = styled.button`
     border-radius: 50%;
     height: 1rem;
     margin: 3px;
-    margin-left: auto;
+    margin-left: ${({ isMetric }) => (isMetric ? "3px" : "auto")};
     width: 1rem;
-  }
-
-  :checked ~ .unitToggle::after {
-    margin-left: 3px;
   }
 `;
 

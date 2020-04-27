@@ -2,17 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { SectionTitle, Reading, ScreenReaders } from "../common";
 
-const Wind = () => (
-  <WindContainer>
-    <SectionTitle>Wind</SectionTitle>
-    <Reading>75 kph</Reading>
+const Wind = ({
+  isMetric,
+  wind: { compassDegrees, imperialSpeed, metricSpeed },
+}) => {
+  let speed = isMetric ? `${metricSpeed} kph` : `${imperialSpeed} mph`;
+  let direction = `${compassDegrees}deg`;
+  return (
+    <WindContainer>
+      <SectionTitle>Wind</SectionTitle>
+      <Reading>{speed}</Reading>
 
-    <Direction>
-      <ScreenReaders>45deg</ScreenReaders>
-      <Arrow />
-    </Direction>
-  </WindContainer>
-);
+      <Direction>
+        <ScreenReaders>{direction}</ScreenReaders>
+        <Arrow direction={direction} />
+      </Direction>
+    </WindContainer>
+  );
+};
 
 const WindContainer = styled.div`
   grid-column: 3 / 4;
@@ -34,7 +41,7 @@ const Direction = styled.div`
 `;
 
 const Arrow = styled.div`
-  --direction: 110deg;
+  --direction: ${({ direction }) => direction};
   --size: 1rem;
   height: calc(var(--size) * 3);
   width: var(--size);

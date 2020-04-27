@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { SectionTitle } from "../common";
 
-const Date = () => (
+const Date = ({ solNum, date }) => (
   <DateContainer>
-    <SectionTitle xl>Sol 377</SectionTitle>
-    <Day>September 31</Day>
+    <SectionTitle xl>Sol {solNum}</SectionTitle>
+    <Day>{date}</Day>
   </DateContainer>
 );
 

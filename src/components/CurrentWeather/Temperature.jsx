@@ -2,13 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { SectionTitle, Reading } from "../common";
 
-const Temperature = () => (
-  <TemperatureContainer>
-    <SectionTitle>Temperature</SectionTitle>
-    <Reading>High: -20°C</Reading>
-    <Reading>Low: -120°C</Reading>
-  </TemperatureContainer>
-);
+const Temperature = ({ temperature, isMetric }) => {
+  let high = isMetric
+    ? `${temperature.metricHigh}°C`
+    : `${temperature.imperialHigh}°F`;
+  let low = isMetric
+    ? `${temperature.metricLow}°C`
+    : `${temperature.imperialLow}°F`;
+  return (
+    <TemperatureContainer>
+      <SectionTitle>Temperature</SectionTitle>
+      <Reading>High: {high}</Reading>
+      <Reading>Low: {low}</Reading>
+    </TemperatureContainer>
+  );
+};
 
 const TemperatureContainer = styled.div`
   --border: solid 0.25em ${({ theme }) => theme.colors.accentDark};

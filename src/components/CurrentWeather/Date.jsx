@@ -11,6 +11,10 @@ const Date = ({ solNum, date }) => (
 
 const DateContainer = styled.div`
   grid-column: 1 / 2;
+
+  @media ${({ theme }) => theme.mediaQueries.phone} {
+    grid-column: 1;
+  }
 `;
 
 const Day = styled.p`

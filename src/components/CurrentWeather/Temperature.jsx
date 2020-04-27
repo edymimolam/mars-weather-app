@@ -29,6 +29,10 @@ const TemperatureContainer = styled.div`
     border-right: none;
     word-break: break-all;
   }
+
+  @media ${({ theme }) => theme.mediaQueries.phone} {
+    grid-column: 1;
+  }
 `;
 
 export default Temperature;

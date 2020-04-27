@@ -23,6 +23,10 @@ const InfoContainer = styled.div`
     grid-column: 1 / 4;
     grid-row: 2;
   }
+
+  @media ${({ theme }) => theme.mediaQueries.phone} {
+    display: none;
+  }
 `;
 
 export default Info;

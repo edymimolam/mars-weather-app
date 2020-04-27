@@ -31,6 +31,10 @@ const WindContainer = styled.div`
   @media ${({ theme }) => theme.mediaQueries.tablet} {
     grid-column: 1 / 3;
   }
+
+  @media ${({ theme }) => theme.mediaQueries.phone} {
+    grid-column: 1;
+  }
 `;
 
 const Direction = styled.div`

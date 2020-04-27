@@ -23,6 +23,7 @@ const theme = {
   },
   mediaQueries: {
     tablet: "only screen and (max-width: 768px)",
+    phone: "only screen and (max-width: 425px)",
   },
 };
 

@@ -29,6 +29,11 @@ const Container = styled.main`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2em;
+
+  @media ${({ theme }) => theme.mediaQueries.phone} {
+    margin: 0;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const MainTitle = styled.h1`

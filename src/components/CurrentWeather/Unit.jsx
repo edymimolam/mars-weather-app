@@ -38,6 +38,10 @@ const UnitContainer = styled.div`
     white-space: nowrap;
     width: 1px;
   }
+
+  @media ${({ theme }) => theme.mediaQueries.phone} {
+    grid-column: 1;
+  }
 `;
 
 const UnitToggle = styled.button`

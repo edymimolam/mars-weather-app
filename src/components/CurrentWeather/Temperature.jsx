@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { SectionTitle, Reading } from "../common";
 
-const Temperature = ({ temperature, isMetric }) => {
-  let high = isMetric
-    ? `${temperature.metricHigh}°C`
-    : `${temperature.imperialHigh}°F`;
-  let low = isMetric
-    ? `${temperature.metricLow}°C`
-    : `${temperature.imperialLow}°F`;
+const Temperature = ({
+  temperature: { metricHigh, imperialHigh, metricLow, imperialLow },
+  isMetric,
+}) => {
+  let high = isMetric ? `${metricHigh}°C` : `${imperialHigh}°F`;
+  let low = isMetric ? `${metricLow}°C` : `${imperialLow}°F`;
   return (
     <TemperatureContainer>
       <SectionTitle>Temperature</SectionTitle>

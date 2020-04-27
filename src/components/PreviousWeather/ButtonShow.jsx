@@ -36,6 +36,10 @@ const StylledButton = styled.button`
 
     ${({ isShow }) => isShow && "transform: rotate(180deg) translateY(-6px);"}
   }
+
+  @media ${({ theme }) => theme.mediaQueries.tablet} {
+    transform: translate(-50%, calc(-100% - 2rem));
+  }
 `;
 
 export default Button;

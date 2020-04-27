@@ -39,6 +39,10 @@ const Day = styled.div`
   & > * {
     margin: 0;
   }
+  @media ${({ theme }) => theme.mediaQueries.tablet} {
+    width: 33%;
+    margin-bottom: 2rem;
+  }
 `;
 
 const Sol = styled.h3``;

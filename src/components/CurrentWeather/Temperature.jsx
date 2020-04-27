@@ -23,6 +23,12 @@ const TemperatureContainer = styled.div`
   border-left: var(--border);
   border-right: var(--border);
   padding: 0 2em;
+
+  @media ${({ theme }) => theme.mediaQueries.tablet} {
+    grid-column: 2 / 4;
+    border-right: none;
+    word-break: break-all;
+  }
 `;
 
 export default Temperature;

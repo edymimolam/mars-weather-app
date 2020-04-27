@@ -38,6 +38,12 @@ const Container = styled.div`
   transform: ${({ isShow }) => (isShow ? "translateY(0)" : "translateY(60%)")};
   transition: transform 350ms ease;
   padding: 3rem;
+
+  @media ${({ theme }) => theme.mediaQueries.tablet} {
+    padding: 2rem;
+    transform: ${({ isShow }) =>
+      isShow ? "translateY(0)" : "translateY(100%)"};
+  }
 `;
 
 const Title = styled.h2`
@@ -59,6 +65,10 @@ const Title = styled.h2`
 const PreviousDaysContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media ${({ theme }) => theme.mediaQueries.tablet} {
+    flex-flow: wrap;
+  }
 `;
 
 export default PreviousWeather;

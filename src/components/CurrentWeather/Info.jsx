@@ -18,6 +18,11 @@ const Info = () => (
 
 const InfoContainer = styled.div`
   grid-column: 1 / 3;
+
+  @media ${({ theme }) => theme.mediaQueries.tablet} {
+    grid-column: 1 / 4;
+    grid-row: 2;
+  }
 `;
 
 export default Info;

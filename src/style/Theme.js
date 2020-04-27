@@ -21,6 +21,9 @@ const theme = {
     accent: "#D06D6D",
     accentDark: "#613131",
   },
+  mediaQueries: {
+    tablet: "only screen and (max-width: 768px)",
+  },
 };
 
 const Theme = ({ children }) => (

@@ -27,6 +27,10 @@ const WindContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: min-content 1fr;
   align-self: start;
+
+  @media ${({ theme }) => theme.mediaQueries.tablet} {
+    grid-column: 1 / 3;
+  }
 `;
 
 const Direction = styled.div`

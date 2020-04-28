@@ -11,6 +11,38 @@ export const slideUpIn = keyframes`
   }
 `;
 
+const dualRing = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+export const LoadingSpinner = styled.div`
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+
+  &::after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: ${dualRing} 1.2s linear infinite;
+  }
+`;
+
 export const SectionTitle = styled.h2`
   font-size: ${({ theme: { fontSizes }, xl }) =>
     xl ? fontSizes.xl : fontSizes.h2};

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { LoadingSpinner } from "./components/common";
 import CurrentWeather from "./components/CurrentWeather";
 import PreviousWeather from "./components/PreviousWeather";
 import { Theme, GlobalStyle } from "./style";
@@ -19,7 +20,7 @@ const App = () => {
     <Theme>
       <GlobalStyle />
       {isLoading ? (
-        <h1>Loading...</h1>
+        <LoadingSpinner />
       ) : (
         <>
           <CurrentWeather

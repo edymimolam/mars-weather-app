@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { ScreenReaders } from "../common";
+import { useTranslation } from "react-i18next";
 
-const Button = ({ onClick, isShow }) => (
-  <StylledButton htmlFor="weather-toggle" onClick={onClick} isShow={isShow}>
-    <span>&#8593;</span>
-    <ScreenReaders>Show previous weather</ScreenReaders>
-  </StylledButton>
-);
+const Button = ({ onClick, isShow }) => {
+  let { t } = useTranslation();
+  return (
+    <StylledButton htmlFor="weather-toggle" onClick={onClick} isShow={isShow}>
+      <span>&#8593;</span>
+      <ScreenReaders>{t("showPreviousWeather")}</ScreenReaders>
+    </StylledButton>
+  );
+};
 
 const StylledButton = styled.button`
   position: absolute;

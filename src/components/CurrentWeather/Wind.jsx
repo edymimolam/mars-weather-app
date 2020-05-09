@@ -1,16 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { SectionTitle, Reading, ScreenReaders } from "../common";
+import { useTranslation } from "react-i18next";
 
 const Wind = ({
   isMetric,
   wind: { compassDegrees, imperialSpeed, metricSpeed },
 }) => {
-  let speed = isMetric ? `${metricSpeed} kph` : `${imperialSpeed} mph`;
+  let { t } = useTranslation();
+  let speed = isMetric
+    ? `${metricSpeed} ${t("kph")}`
+    : `${imperialSpeed} ${t("mph")}`;
   let direction = `${compassDegrees}deg`;
   return (
     <WindContainer>
-      <SectionTitle>Wind</SectionTitle>
+      <SectionTitle>{t("wind")}</SectionTitle>
       <Reading>{speed}</Reading>
 
       <Direction>

@@ -1,13 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { SectionTitle } from "../common";
+import { useTranslation } from "react-i18next";
 
-const Date = ({ solNum, date }) => (
-  <DateContainer>
-    <SectionTitle xl>Sol {solNum}</SectionTitle>
-    <Day>{date}</Day>
-  </DateContainer>
-);
+const Date = ({ solNum, date }) => {
+  const { t } = useTranslation();
+  return (
+    <DateContainer>
+      <SectionTitle xl>
+        {t("sol")} {solNum}
+      </SectionTitle>
+      <Day>{date}</Day>
+    </DateContainer>
+  );
+};
 
 const DateContainer = styled.div`
   grid-column: 1 / 2;

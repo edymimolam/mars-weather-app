@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import Date from "./Date";
 import Temperature from "./Temperature";
 import Wind from "./Wind";
@@ -10,16 +11,19 @@ const CurrentWeather = ({
   isMetric,
   onUnitClick,
   currentSol: { solNum, date, temperature, wind },
-}) => (
-  <Container>
-    <MainTitle>Latest weather at Elysium Plantitia</MainTitle>
-    <Date solNum={solNum} date={date} />
-    <Temperature temperature={temperature} isMetric={isMetric} />
-    <Wind wind={wind} isMetric={isMetric} />
-    <Info />
-    <Unit isMetric={isMetric} onUnitClick={onUnitClick} />
-  </Container>
-);
+}) => {
+  const { t } = useTranslation();
+  return (
+    <Container>
+      <MainTitle>{t("mainTitle")}</MainTitle>
+      <Date solNum={solNum} date={date} />
+      <Temperature temperature={temperature} isMetric={isMetric} />
+      <Wind wind={wind} isMetric={isMetric} />
+      <Info />
+      <Unit isMetric={isMetric} onUnitClick={onUnitClick} />
+    </Container>
+  );
+};
 
 const Container = styled.main`
   background: rgba(0, 0, 0, 0.7);

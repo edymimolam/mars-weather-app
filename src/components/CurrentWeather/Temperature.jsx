@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { SectionTitle, Reading } from "../common";
+import { useTranslation } from "react-i18next";
 
 const Temperature = ({
   temperature: { metricHigh, imperialHigh, metricLow, imperialLow },
@@ -8,11 +9,17 @@ const Temperature = ({
 }) => {
   let high = isMetric ? `${metricHigh}°C` : `${imperialHigh}°F`;
   let low = isMetric ? `${metricLow}°C` : `${imperialLow}°F`;
+  let { t } = useTranslation();
+
   return (
     <TemperatureContainer>
-      <SectionTitle>Temperature</SectionTitle>
-      <Reading>High: {high}</Reading>
-      <Reading>Low: {low}</Reading>
+      <SectionTitle>{t("temperature")}</SectionTitle>
+      <Reading>
+        {t("high")}: {high}
+      </Reading>
+      <Reading>
+        {t("low")}: {low}
+      </Reading>
     </TemperatureContainer>
   );
 };

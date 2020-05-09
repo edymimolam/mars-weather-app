@@ -3,16 +3,18 @@ import styled, { css } from "styled-components";
 import { slideUpIn } from "../common";
 import PreviousDay from "./PreviousDay";
 import ButtonShow from "./ButtonShow";
+import { useTranslation } from "react-i18next";
 
 const PreviousWeather = ({ sols, ...props }) => {
   let [isShow, setIsShow] = useState(false);
   let animationDelay = 75;
+  let { t } = useTranslation();
 
   return (
     <Container isShow={isShow}>
       <ButtonShow isShow={isShow} onClick={() => setIsShow((show) => !show)} />
 
-      <Title isShow={isShow}>Previous 7 days</Title>
+      <Title isShow={isShow}>{t("previousWeatherTitle")}</Title>
 
       <PreviousDaysContainer>
         {sols.map((sol) => (

@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { slideUpIn } from "../common";
+import { useTranslation } from "react-i18next";
 
 const PreviousDay = ({
   isShow,
@@ -15,14 +16,21 @@ const PreviousDay = ({
 }) => {
   let high = isMetric ? `${metricHigh}°C` : `${imperialHigh}°F`;
   let low = isMetric ? `${metricLow}°C` : `${imperialLow}°F`;
+  let { t } = useTranslation();
 
   return (
     <Day isShow={isShow} animationDelay={animationDelay}>
-      <Sol> Sol {solNum}</Sol>
+      <Sol>
+        {t("sol")} {solNum}
+      </Sol>
       <Date>{date}</Date>
-      <Temperature>High: {high}</Temperature>
-      <Temperature>Low: {low}</Temperature>
-      <Info onClick={() => onMoreInfoClick(solNum)}>more info</Info>
+      <Temperature>
+        {t("high")}: {high}
+      </Temperature>
+      <Temperature>
+        {t("low")}: {low}
+      </Temperature>
+      <Info onClick={() => onMoreInfoClick(solNum)}>{t("moreInfo")}</Info>
     </Day>
   );
 };

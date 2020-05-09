@@ -1,20 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import { Trans, useTranslation } from "react-i18next";
 
-const Info = () => (
-  <InfoContainer>
-    <p>
-      InSight is taking daily weather measurements (temperature, wind, pressure)
-      on the surface of Mars at Elysium Planitia, a flat, smooth plain near
-      Mars’ equator.
-    </p>
-    <p>
-      This is only a part of InSight’s mission.{" "}
-      <a href="https://mars.nasa.gov/insight/mission/overview/">Click here</a>{" "}
-      to find out more.
-    </p>
-  </InfoContainer>
-);
+const Info = () => {
+  let { t } = useTranslation();
+  return (
+    <InfoContainer>
+      <p>{t("info.p1")}</p>
+      <p>
+        <Trans i18nKey="info.p2">
+          This is only a part of InSight’s mission.
+          <a href="https://mars.nasa.gov/insight/mission/overview/">
+            Click here
+          </a>
+          to find out more.
+        </Trans>
+      </p>
+    </InfoContainer>
+  );
+};
 
 const InfoContainer = styled.div`
   grid-column: 1 / 3;

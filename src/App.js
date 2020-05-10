@@ -25,8 +25,6 @@ const App = () => {
 
   useEffect(() => {
     if (sols) {
-      console.log("App -> sols", sols);
-
       setCurrentSol(sols[sols.length - 1]);
       setIsLoading(false);
     }
@@ -53,6 +51,8 @@ const App = () => {
           <CurrentWeather
             isMetric={isMetric}
             onUnitClick={onUnitClick}
+            onLangClick={onLangClick}
+            lang={lang}
             currentSol={currentSol}
           />
           <PreviousWeather

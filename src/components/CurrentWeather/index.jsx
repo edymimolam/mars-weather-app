@@ -5,12 +5,12 @@ import Date from "./Date";
 import Temperature from "./Temperature";
 import Wind from "./Wind";
 import Info from "./Info";
-import Unit from "./Unit";
+import Options from "./Options";
 
 const CurrentWeather = ({
-  isMetric,
-  onUnitClick,
   currentSol: { solNum, date, temperature, wind },
+  isMetric,
+  ...otherOptions
 }) => {
   const { t } = useTranslation();
   return (
@@ -20,7 +20,7 @@ const CurrentWeather = ({
       <Temperature temperature={temperature} isMetric={isMetric} />
       <Wind wind={wind} isMetric={isMetric} />
       <Info />
-      <Unit isMetric={isMetric} onUnitClick={onUnitClick} />
+      <Options isMetric={isMetric} {...otherOptions} />
     </Container>
   );
 };
@@ -28,7 +28,7 @@ const CurrentWeather = ({
 const Container = styled.main`
   background: rgba(0, 0, 0, 0.7);
   padding: 2em;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 4em auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

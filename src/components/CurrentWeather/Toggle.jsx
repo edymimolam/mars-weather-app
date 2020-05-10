@@ -1,22 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 
-const Unit = ({ isMetric, onUnitClick }) => (
-  <UnitContainer onClick={onUnitClick}>
-    <label htmlFor="cel">°C</label>
-    <input type="radio" />
+const Toggle = ({ isToggled, callback, onText, offText }) => (
+  <ToggleContainer onClick={callback}>
+    <label>
+      {onText}
+      <input type="radio" />
+    </label>
 
-    <UnitToggle isMetric={isMetric} />
+    <StyledToggle isToggled={isToggled} />
 
-    <label htmlFor="fah">°F</label>
-    <input type="radio" />
-  </UnitContainer>
+    <label>
+      {offText}
+      <input type="radio" />
+    </label>
+  </ToggleContainer>
 );
 
-const UnitContainer = styled.div`
-  grid-column: 3 / 4;
-  place-self: end;
+const ToggleContainer = styled.div`
   color: ${({ theme }) => theme.colors.light};
+  margin-left: 1rem;
   display: flex;
   opacity: 0.7;
   transition: opacity 275ms linear;
@@ -38,13 +41,9 @@ const UnitContainer = styled.div`
     white-space: nowrap;
     width: 1px;
   }
-
-  @media ${({ theme }) => theme.mediaQueries.phone} {
-    grid-column: 1;
-  }
 `;
 
-const UnitToggle = styled.button`
+const StyledToggle = styled.button`
   cursor: pointer;
   width: 4em;
   border: 2px solid ${({ theme }) => theme.colors.light};
@@ -64,9 +63,9 @@ const UnitToggle = styled.button`
     border-radius: 50%;
     height: 1rem;
     margin: 3px;
-    margin-left: ${({ isMetric }) => (isMetric ? "3px" : "auto")};
+    margin-left: ${({ isToggled }) => (isToggled ? "3px" : "auto")};
     width: 1rem;
   }
 `;
 
-export default Unit;
+export default Toggle;
